@@ -1,10 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
+
       <div class="row">
         <h2>User info</h2>
-        
+        <p>
+          <%= image_tag @user.get_profile_image(100, 100) %>
+        </p>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th>
+              <td><%= @user.name %></td>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <td><%= @user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
       <div class="row">
         <h2>New book</h2>
         <%= form_with model: @book, url: books_path, method: :post do |f| %>
@@ -16,9 +32,37 @@
         <% end %>
       </div>
     </div>
+
     <div class="col-lg-8">
       <h2>Books</h2>
-      
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td>
+              <%= link_to user_path(book.user.id) do %>
+                <%= image_tag book.user.get_profile_image(100, 100) %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(book.id) do %>
+                <%= book.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= book.body %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
