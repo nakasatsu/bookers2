@@ -21,6 +21,8 @@
         </table>
         <% if @user == current_user %>
           <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+        <% else %>
+          <%= link_to "プロフィール編集", user_path(current_user.id) %>
         <% end %>
       </div>
 
