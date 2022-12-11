@@ -52,7 +52,16 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
+
+    <body>
+
+      <%# deivseのフラッシュメッセージを表示 %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+
+    </body>
 
     <footer>
       <div class="container">

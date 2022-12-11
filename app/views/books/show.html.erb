@@ -1,35 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
-      <div class="row">
-        <h2>User info</h2>
-        <p>
-          <%= image_tag @user.get_profile_image(100, 100) %>
-        </p>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>name</th>
-              <td><%= @user.name %></td>
-            </tr>
-            <tr>
-              <th>introduction</th>
-              <td><%= @user.introduction %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="row">
-        <h2>New book</h2>
-        <%= form_with model: @Book, url: books_path, method: :post do |f| %>
-          <p>Title</p>
-          <%= f.text_field :title %>
-          <p>Opinion</p>
-          <%= f.text_area :body %>
-          <%= f.submit 'Create Book' %>
-        <% end %>
-      </div>
-    </div>
+    <%= render partial: 'sidebar', locals: {user: @user, book: @book } %>
+
     <div class="col-lg-8">
       <h2>Book detail</h2>
       <table class="table">
@@ -43,21 +15,21 @@
 
             </td>
             <td>
-              <%= link_to book_path(@book.id) do %>
-                <%= @book.title %>
+              <%= link_to book_path(@Book.id) do %>
+                <%= @Book.title %>
               <% end %>
             </td>
             <td>
-              <%= @book.body %>
+              <%= @Book.body %>
             </td>
             <td>
               <% if @user == current_user %>
-                <p><%= link_to "Edit", edit_book_path(@book.id) %></p>
+                <p><%= link_to "Edit", edit_book_path(@Book.id) %></p>
               <% end %>
             </td>
             <td>
               <% if @user == current_user %>
-                <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-comfirm" => "本当に削除しますか？" %>
+                <%= link_to "Destroy", book_path(@Book.id), method: :delete, "data-comfirm" => "本当に削除しますか？" %>
               <% end %>
             </td>
           </tr>
