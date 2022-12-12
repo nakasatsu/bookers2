@@ -1,4 +1,4 @@
-<div class="col-lg-4">
+<div class="col-md-4">
   <div class="row">
     <h2>User info</h2>
     <p>
@@ -16,11 +16,11 @@
         </tr>
       </tbody>
     </table>
-    <% if user == current_user %>
-      <p><%= link_to "プロフィール編集", edit_user_path(user.id) %></p>
-    <% else %>
-      <%= link_to "プロフィール編集", user_path(current_user.id) %>
-    <% end %>
+
+      <%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary col-md-4' do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+
   </div>
 
   <div class="row">
