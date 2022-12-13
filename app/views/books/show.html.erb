@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <%= flash[:notice] %>
   <div class="row">
     <%= render partial: 'sidebar', locals: {user: @user, book: @book } %>
 
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
